@@ -291,7 +291,7 @@ initialize()
           try:
             with open(fname[:-4]+".json", "r") as f:
               metadata = json.load(f)
-            plt.title(" ".join(metadata['labels']))
+            plt.title(" ".join(metadata['labels'])+"\n"+fname.split("/")[-1][:-4])
           except:
             plt.title("no metadata")
           plt.axis("off")
