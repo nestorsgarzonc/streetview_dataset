@@ -18,7 +18,7 @@ class StreetViewCapture:
         capture = []
         if labels is None:
             labels = [
-              "supermercado", "chatarría", "tienda", "carnicería", "licorera",
+              "supermercado", "talleres carros/motos", "tienda", "carnicería", "licorera",
               "electrónica/cómputo", "ferretería", "muebles/tapicería",
               "electrodomésticos", "deporte", "ropa", "zapatería", "farmacia", 
               "puesto móvil/toldito", "hotel", "café/restaurante", "bar", "casino", 
