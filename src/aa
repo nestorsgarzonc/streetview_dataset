@@ -1,0 +1,7 @@
+            labels = [
+              "supermercado", "chatarría", "tienda", "carnicería", "licorera",
+              "electrónica/cómputo", "ferretería", "muebles/tapicería",
+              "electrodomésticos", "deporte", "ropa", "zapatería", "farmacia", 
+              "puesto móvil/toldito", "hotel", "café/restaurante", "bar", "casino", 
+              "belleza/barbería/peluquería", "animales"
+            ]

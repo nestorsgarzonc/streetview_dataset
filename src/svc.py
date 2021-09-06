@@ -12,18 +12,25 @@ from skimage.io import imread
 
 class StreetViewCapture:
 
-    def __init__(self, h=400, w=600, labels=None, datapath="data", 
+    def __init__(self, apikey, h=400, w=600, labels=None, datapath="data", 
                  geojson_file='zona.geojson'):
         global capture
         capture = []
         if labels is None:
-            labels = ["juguetes", "zapateria", "restaurante", "supermercado", "automovil", "papelería", "tienda", "cafetería", "motos"]
+            labels = [
+              "supermercado", "chatarría", "tienda", "carnicería", "licorera",
+              "electrónica/cómputo", "ferretería", "muebles/tapicería",
+              "electrodomésticos", "deporte", "ropa", "zapatería", "farmacia", 
+              "puesto móvil/toldito", "hotel", "café/restaurante", "bar", "casino", 
+              "belleza/barbería/peluquería", "animales"
+            ]
 
         self.h = h
         self.w = w
         self.labels = labels
         self.datapath = datapath
         self.last_capture = None
+        self.apikey = apikey
 
         if geojson_file is not None and os.path.isfile(geojson_file):
             with open(geojson_file, "r") as f:
@@ -83,7 +90,7 @@ class StreetViewCapture:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyD01AQ3uVvDegJ4-0eDdvaFOyaeQp3qk64"></script>
+<script src="https://maps.google.com/maps/api/js?key=%s"></script>
 
 <script>
 elem = document.createElement('div')
@@ -185,9 +192,7 @@ elem.innerHTML='%s'
       var startpos = {lat: 6.26744, lng: -75.5692};
 
       var geojson_str = '%s'
-      console.log ("XX", geojson_str, geojson_str.includes("NOGEOJSON"))
       if (!geojson_str.includes("NOGEOJSON")) {
-        console.log("parsing")
         var geojson = JSON.parse(geojson_str)
         p = geojson['features'][0]['geometry']['coordinates'][0][0]
         startpos = {lat: p[1], lng:p[0]}
@@ -230,7 +235,7 @@ document.getElementById("map").style.width = "%spx";
 initialize()
 
 </script>
-"""%(self.form_html, self.geojson_str, self.h, self.w, self.h, self.w)
+"""%(self.apikey, self.form_html, self.geojson_str, self.h, self.w, self.h, self.w)
 
     def getimg(self, metadata, imgdata):
 
