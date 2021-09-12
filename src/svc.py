@@ -13,7 +13,7 @@ from skimage.io import imread
 class StreetViewCapture:
 
     def __init__(self, apikey, h=400, w=600, labels=None, datapath="data", 
-                 geojson_file='zona.geojson'):
+                 geojson_file='streetview_dataset/zona.geojson'):
         global capture
         capture = []
         if labels is None:
